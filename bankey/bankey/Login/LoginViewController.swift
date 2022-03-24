@@ -9,11 +9,11 @@ import UIKit
 
 class LoginViewController: UIViewController {
     
-    let titleLabel = UILabel()
-    let subtitleLabel = UILabel()
-    let loginView = LoginView()
-    let signInButton = UIButton(type: .system)
-    let errorMessageLabel = UILabel()
+    lazy var titleLabel = UILabel()
+    lazy var subtitleLabel = UILabel()
+    lazy var loginView = LoginView()
+    lazy var signInButton = UIButton(type: .system)
+    lazy var errorMessageLabel = UILabel()
     
     var username: String? {
         return loginView.usernameTextField.text
