@@ -8,32 +8,46 @@
 import UIKit
 
 class OnboardingViewController: UIViewController {
+    
+    private let heroImageName: String
+    private let onboardingText: String
 
     lazy var containerStackView: UIStackView = {
-        let stackView = UIStackView()
-        stackView.translatesAutoresizingMaskIntoConstraints = false
-        stackView.axis = .vertical
-        stackView.spacing = 20
-        return stackView
+        let containerStackView = UIStackView()
+        containerStackView.translatesAutoresizingMaskIntoConstraints = false
+        containerStackView.axis = .vertical
+        containerStackView.spacing = 20
+        return containerStackView
     }()
     
     lazy var onboardingImage: UIImageView = {
        let onboardingImage = UIImageView()
         onboardingImage.translatesAutoresizingMaskIntoConstraints = false
-        onboardingImage.contentMode = .scaleAspectFill
-        onboardingImage.image = UIImage(named: "delorean")
+        onboardingImage.contentMode = .scaleAspectFit
+        onboardingImage.image = UIImage(named: self.heroImageName)
         return onboardingImage
     }()
     
     lazy var onboardingTextLabel: UILabel = {
         let onboardingTextLabel = UILabel()
         onboardingTextLabel.translatesAutoresizingMaskIntoConstraints = false
-        onboardingTextLabel.text = "Bankey is faster, easy to use, and has brand new look and feel that will make you feel like you're back in 1989."
+        onboardingTextLabel.text = self.onboardingText
         onboardingTextLabel.textAlignment = .center
         onboardingTextLabel.numberOfLines = 0
         onboardingTextLabel.font = UIFont.preferredFont(forTextStyle: .title3)
         return onboardingTextLabel
     }()
+    
+    init(heroImageName: String, onboardingText: String) {
+        self.heroImageName = heroImageName
+        self.onboardingText = onboardingText
+        
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()

@@ -9,19 +9,25 @@ import UIKit
 
 class OnboardingContainerViewController: UIViewController {
     
-    let pageViewController: UIPageViewController
+    lazy var pageViewController: UIPageViewController = {
+        let pageViewController = UIPageViewController(transitionStyle: .scroll, navigationOrientation: .horizontal, options: nil)
+        pageViewController.dataSource = self
+        pageViewController.view.translatesAutoresizingMaskIntoConstraints = false
+        return pageViewController
+    }()
+    
     var pages = [UIViewController]()
+    
     var currentVC: UIViewController {
         didSet {
         }
     }
     
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
-        self.pageViewController = UIPageViewController(transitionStyle: .scroll, navigationOrientation: .horizontal, options: nil)
         
-        let page1 = ViewController1()
-        let page2 = ViewController2()
-        let page3 = ViewController3()
+        let page1 = OnboardingViewController(heroImageName: "delorean", onboardingText: "Bankey is faster, easy to use, and has brand new look and feel that will make you feel like you're back in 1989.")
+        let page2 = OnboardingViewController(heroImageName: "world", onboardingText: "Move your money around the world quickly and securely.")
+        let page3 = OnboardingViewController(heroImageName: "thumbs", onboardingText: "Learn more at www.bankey.com")
         
         pages.append(page1)
         pages.append(page2)
@@ -39,14 +45,11 @@ class OnboardingContainerViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        view.backgroundColor = .systemPurple
+        view.backgroundColor = .systemBackground
         
         addChild(pageViewController)
         view.addSubview(pageViewController.view)
         pageViewController.didMove(toParent: self)
-        
-        pageViewController.dataSource = self
-        pageViewController.view.translatesAutoresizingMaskIntoConstraints = false
         
         NSLayoutConstraint.activate([
             view.topAnchor.constraint(equalTo: pageViewController.view.topAnchor),
@@ -89,27 +92,5 @@ extension OnboardingContainerViewController: UIPageViewControllerDataSource {
     
     func presentationIndex(for pageViewController: UIPageViewController) -> Int {
         return pages.firstIndex(of: self.currentVC) ?? 0
-    }
-}
-
-// MARK: - ViewControllers
-class ViewController1: UIViewController {
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        view.backgroundColor = .systemRed
-    }
-}
-
-class ViewController2: UIViewController {
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        view.backgroundColor = .systemGreen
-    }
-}
-
-class ViewController3: UIViewController {
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        view.backgroundColor = .systemBlue
     }
 }
