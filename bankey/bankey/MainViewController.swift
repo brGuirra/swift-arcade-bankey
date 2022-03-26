@@ -49,14 +49,6 @@ class MainViewController: UITabBarController {
     }
 }
 
-class AccountSummaryViewController: UIViewController {
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        view.backgroundColor = .orange
-    }
-}
-
 class MoveMoneyViewController: UIViewController {
     
     override func viewDidLoad() {
