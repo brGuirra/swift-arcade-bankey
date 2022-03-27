@@ -33,6 +33,8 @@ extension AccountSummaryViewController {
         tableView.dataSource = self
         
         tableView.translatesAutoresizingMaskIntoConstraints = false
+        tableView.register(AccountSummaryTableHeader.self, forHeaderFooterViewReuseIdentifier: AccountSummaryTableHeader.identifier)
+        
         view.addSubview(tableView)
         
         NSLayoutConstraint.activate([
@@ -59,6 +61,16 @@ extension AccountSummaryViewController: UITableViewDataSource {
 extension AccountSummaryViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
+    }
+    
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let header = tableView.dequeueReusableHeaderFooterView(withIdentifier: AccountSummaryTableHeader.identifier) as? AccountSummaryTableHeader
+        
+        return header
+    }
+    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 148
     }
 }
 
