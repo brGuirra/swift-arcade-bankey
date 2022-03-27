@@ -9,7 +9,8 @@ import UIKit
 
 class AccountSummaryTableHeader: UITableViewHeaderFooterView {
     
-    static let identifier = "TableHeader"
+    static let reuseID = "AccountSummaryTableHeader"
+    static let headerHeight: CGFloat = 148
     
     let containerStackView = UIStackView()
     let infoStackView = UIStackView()
@@ -37,7 +38,7 @@ class AccountSummaryTableHeader: UITableViewHeaderFooterView {
 
 extension AccountSummaryTableHeader {
     
-    func style() {
+    private func style() {
         contentView.backgroundColor = appColor
         
         containerStackView.translatesAutoresizingMaskIntoConstraints = false
@@ -49,14 +50,14 @@ extension AccountSummaryTableHeader {
         infoStackView.axis = .vertical
         infoStackView.spacing = 8
         
-        brandLabel.font = UIFont.systemFont(ofSize: 24, weight: .semibold)
+        brandLabel.font = UIFont.preferredFont(forTextStyle: .title1)
         brandLabel.text = "Bankey"
         
         greetingLabel.text = "Good morning"
         
         usernameLabel.text = "Bruno"
         
-        dateLabel.font = UIFont.systemFont(ofSize: 14)
+        dateLabel.font = UIFont.preferredFont(forTextStyle: .caption1)
         dateLabel.text = "Date"
         
         weatherImage.translatesAutoresizingMaskIntoConstraints = false
@@ -64,7 +65,7 @@ extension AccountSummaryTableHeader {
         weatherImage.tintColor = .systemYellow
     }
     
-    func layout() {
+    private func layout() {
         infoStackView.addArrangedSubview(brandLabel)
         infoStackView.addArrangedSubview(greetingLabel)
         infoStackView.addArrangedSubview(usernameLabel)
