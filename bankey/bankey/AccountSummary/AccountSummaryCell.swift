@@ -12,9 +12,22 @@ class AccountSummaryCell: UITableViewCell {
     static let resuseID = "AccountSummaryCell"
     static let cellHeight: CGFloat = 112
     
+    enum AccountType: String {
+        case Banking
+        case CreditCard
+        case Investment
+    }
+    
+    struct ViewModel {
+        let accountType: AccountType
+        let accountName: String
+    }
+    
+    let viewModel: ViewModel? = nil
+    
     let typeLabel = UILabel()
     let underlineView = UIView()
-    let nameLabel = UILabel()
+    let accountNameLabel = UILabel()
     
     let balanceStackView = UIStackView()
     let balanceLabel = UILabel()
@@ -34,7 +47,7 @@ class AccountSummaryCell: UITableViewCell {
     }
 }
 
-//MARK: - Functions
+//MARK: - Layout and Style
 
 extension AccountSummaryCell {
     
@@ -49,10 +62,10 @@ extension AccountSummaryCell {
         underlineView.backgroundColor = appColor
         contentView.addSubview(underlineView)
         
-        nameLabel.translatesAutoresizingMaskIntoConstraints = false
-        nameLabel.font = UIFont.preferredFont(forTextStyle: .body)
-        nameLabel.text = "Account name"
-        contentView.addSubview(nameLabel)
+        accountNameLabel.translatesAutoresizingMaskIntoConstraints = false
+        accountNameLabel.font = UIFont.preferredFont(forTextStyle: .body)
+        accountNameLabel.text = "Account name"
+        contentView.addSubview(accountNameLabel)
         
         balanceLabel.translatesAutoresizingMaskIntoConstraints = false
         balanceLabel.font = UIFont.preferredFont(forTextStyle: .body)
@@ -96,14 +109,14 @@ extension AccountSummaryCell {
         
         // NameLabel Constraints
         NSLayoutConstraint.activate([
-            nameLabel.topAnchor.constraint(equalToSystemSpacingBelow: underlineView.bottomAnchor, multiplier: 2),
-            nameLabel.leadingAnchor.constraint(equalToSystemSpacingAfter: contentView.leadingAnchor, multiplier: 2)
+            accountNameLabel.topAnchor.constraint(equalToSystemSpacingBelow: underlineView.bottomAnchor, multiplier: 2),
+            accountNameLabel.leadingAnchor.constraint(equalToSystemSpacingAfter: contentView.leadingAnchor, multiplier: 2)
         ])
         
         // BalanceStackView Constraints
         NSLayoutConstraint.activate([
             balanceStackView.topAnchor.constraint(equalToSystemSpacingBelow: underlineView.bottomAnchor, multiplier: 0),
-            balanceStackView.leadingAnchor.constraint(equalTo: nameLabel.trailingAnchor, constant: 4),
+            balanceStackView.leadingAnchor.constraint(equalTo: accountNameLabel.trailingAnchor, constant: 4),
             contentView.trailingAnchor.constraint(equalToSystemSpacingAfter: balanceStackView.trailingAnchor, multiplier: 4)
         ])
         
@@ -114,6 +127,8 @@ extension AccountSummaryCell {
         ])
     }
 }
+
+//MARK: - Currency Formatting
 
 extension AccountSummaryCell {
     private func makeFormattedBalance(dollars: String, cents: String) -> NSMutableAttributedString {
@@ -129,5 +144,27 @@ extension AccountSummaryCell {
         rootString.append(centString)
         
         return rootString
+    }
+}
+
+//MARK: - ViewModel Configuration
+
+extension AccountSummaryCell {
+    
+    func confingure(with vm: ViewModel) {
+        typeLabel.text = vm.accountType.rawValue
+        accountNameLabel.text = vm.accountName
+        
+        switch vm.accountType {
+            case .Banking:
+                underlineView.backgroundColor = appColor
+                balanceLabel.text = "Current balance"
+            case .CreditCard:
+                underlineView.backgroundColor = .systemOrange
+                balanceLabel.text = "Current balance"
+            case .Investment:
+                underlineView.backgroundColor = .systemPurple
+                balanceLabel.text = "Value"
+        }
     }
 }
