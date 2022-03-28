@@ -34,6 +34,10 @@ extension AccountSummaryViewController {
         tableView.translatesAutoresizingMaskIntoConstraints = false
         tableView.register(AccountSummaryTableHeader.self, forHeaderFooterViewReuseIdentifier: AccountSummaryTableHeader.reuseID)
         tableView.register(AccountSummaryCell.self, forCellReuseIdentifier: AccountSummaryCell.resuseID)
+        tableView.backgroundColor = appColor
+        
+        // Removes white space before the header in the TableView
+        tableView.sectionHeaderTopPadding = 0.0
         
         view.addSubview(tableView)
         
