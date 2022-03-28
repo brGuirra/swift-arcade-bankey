@@ -23,6 +23,7 @@
 		3DCB70E327E7D5CF007733F0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3DCB70E127E7D5CF007733F0 /* LaunchScreen.storyboard */; };
 		3DCB70EE27E7DD9D007733F0 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DCB70ED27E7DD9D007733F0 /* LoginView.swift */; };
 		3DCC31F827F1E3FB00741653 /* CurrencyFormatterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DCC31F727F1E3FB00741653 /* CurrencyFormatterTests.swift */; };
+		3DCC31FA27F1FF9F00741653 /* NSNotificationName.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DCC31F927F1FF9F00741653 /* NSNotificationName.swift */; };
 		3DE2301227EC01A400CAB753 /* OnboardingContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DE2301127EC01A400CAB753 /* OnboardingContainerViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -56,6 +57,7 @@
 		3DCB70ED27E7DD9D007733F0 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		3DCC31EE27F1E34300741653 /* bankeyUnitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = bankeyUnitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		3DCC31F727F1E3FB00741653 /* CurrencyFormatterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyFormatterTests.swift; sourceTree = "<group>"; };
+		3DCC31F927F1FF9F00741653 /* NSNotificationName.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSNotificationName.swift; sourceTree = "<group>"; };
 		3DE2301127EC01A400CAB753 /* OnboardingContainerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingContainerViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -84,6 +86,7 @@
 				3D90C6FD27EF940F0088B92B /* UIViewController+Utils.swift */,
 				3D787F8827F148D0002E3811 /* Decilma+Utils.swift */,
 				3D787F8A27F14969002E3811 /* CurrencyFormatter.swift */,
+				3DCC31F927F1FF9F00741653 /* NSNotificationName.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -275,6 +278,7 @@
 				3DCB70DB27E7D5CE007733F0 /* LoginViewController.swift in Sources */,
 				3D787F8B27F14969002E3811 /* CurrencyFormatter.swift in Sources */,
 				3D5DA9A427ED62EA00FF7507 /* OnboardingViewController.swift in Sources */,
+				3DCC31FA27F1FF9F00741653 /* NSNotificationName.swift in Sources */,
 				3D787F8727F0D74D002E3811 /* AccountSummaryCell.swift in Sources */,
 				3D90C70027EF9A6C0088B92B /* MainViewController.swift in Sources */,
 				3D90C70A27EFB1020088B92B /* AccountSummaryViewController.swift in Sources */,
