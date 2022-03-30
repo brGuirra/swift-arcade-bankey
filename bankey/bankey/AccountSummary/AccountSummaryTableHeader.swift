@@ -21,12 +21,14 @@ class AccountSummaryTableHeader: UITableViewHeaderFooterView {
     let dateLabel = UILabel()
     let weatherImage = UIImageView()
     
+    let shakeBellView = ShakeyBellView()
     
     override init(reuseIdentifier: String?) {
         super.init(reuseIdentifier: reuseIdentifier)
         
         style()
         layout()
+        setupShakeBell()
     }
     
     required init?(coder: NSCoder) {
@@ -43,7 +45,7 @@ extension AccountSummaryTableHeader {
         
         containerStackView.translatesAutoresizingMaskIntoConstraints = false
         containerStackView.axis = .horizontal
-        containerStackView.alignment = .center
+        containerStackView.alignment = .top
         containerStackView.distribution = .fill
         
         infoStackView.translatesAutoresizingMaskIntoConstraints = false
@@ -87,6 +89,16 @@ extension AccountSummaryTableHeader {
         NSLayoutConstraint.activate([
             weatherImage.heightAnchor.constraint(equalToConstant: 100),
             weatherImage.widthAnchor.constraint(equalToConstant: 100)
+        ])
+    }
+    
+    private func setupShakeBell() {
+        shakeBellView.translatesAutoresizingMaskIntoConstraints = false
+        contentView.addSubview(shakeBellView)
+        
+        NSLayoutConstraint.activate([
+            shakeBellView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
+            shakeBellView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor)
         ])
     }
 }
