@@ -11,10 +11,11 @@ class AccountSummaryViewController: UIViewController {
     
     // Request Models
     var profile: Profile?
+    var accounts: [Account] = []
     
     // View Models
     var headerViewModel = AccountSummaryTableHeader.ViewModel(greetMessage: "Welcome", name: "", date: Date())
-    var accountCellViewModel: [AccountSummaryCell.ViewModel] = []
+    var accountCellViewModels: [AccountSummaryCell.ViewModel] = []
     
     var tableView = UITableView()
     
@@ -71,10 +72,10 @@ extension AccountSummaryViewController {
 
 extension AccountSummaryViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard !accountCellViewModel.isEmpty else { return UITableViewCell() }
+        guard !accountCellViewModels.isEmpty else { return UITableViewCell() }
         
         
-        let account = accountCellViewModel[indexPath.row]
+        let account = accountCellViewModels[indexPath.row]
         let cell = tableView.dequeueReusableCell(withIdentifier: AccountSummaryCell.resuseID, for: indexPath) as! AccountSummaryCell
         cell.confingure(with: account)
         
@@ -82,7 +83,7 @@ extension AccountSummaryViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return accountCellViewModel.count
+        return accountCellViewModels.count
     }
 }
 
@@ -105,38 +106,6 @@ extension AccountSummaryViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return AccountSummaryCell.cellHeight
-    }
-}
-
-//MARK: - Mocking Data Fetch
-
-extension AccountSummaryViewController {
-    private func fetchAccounts() {
-        let savings = AccountSummaryCell.ViewModel(accountType: .Banking,
-                                                   accountName: "Basic Savings",
-                                                   balance: 929466.23)
-        let chequing = AccountSummaryCell.ViewModel(accountType: .Banking,
-                                                    accountName: "No-Fee All-In Chequing",
-                                                    balance: 17562.44)
-        let visa = AccountSummaryCell.ViewModel(accountType: .CreditCard,
-                                                accountName: "Visa Avion Card",
-                                                balance: 412.83)
-        let masterCard = AccountSummaryCell.ViewModel(accountType: .CreditCard,
-                                                      accountName: "Student Mastercard",
-                                                      balance: 50.83)
-        let investment1 = AccountSummaryCell.ViewModel(accountType: .Investment,
-                                                       accountName: "Tax-Free Saver",
-                                                       balance: 2000.00)
-        let investment2 = AccountSummaryCell.ViewModel(accountType: .Investment,
-                                                       accountName: "Growth Fund",
-                                                       balance: 15000.00)
-        
-        accountCellViewModel.append(savings)
-        accountCellViewModel.append(chequing)
-        accountCellViewModel.append(visa)
-        accountCellViewModel.append(masterCard)
-        accountCellViewModel.append(investment1)
-        accountCellViewModel.append(investment2)
     }
 }
 
@@ -166,7 +135,16 @@ extension AccountSummaryViewController {
             }
         }
         
-        fetchAccounts()
+        fetchAccounts(forUserId: "1") { result in
+            switch result {
+                case .success(let accounts):
+                    self.accounts = accounts
+                    self.configureTableCells(with: accounts)
+                    self.tableView.reloadData()
+                case .failure(let error):
+                    print(error.localizedDescription)
+            }
+        }
     }
 
     private func configureTableHeaderView(with profile: Profile) {
@@ -174,6 +152,14 @@ extension AccountSummaryViewController {
         
         if let headerView = tableView.headerView(forSection: 0) as? AccountSummaryTableHeader {
             headerView.configure(viewModel: vm)
+        }
+    }
+    
+    private func configureTableCells(with accounts: [Account]) {
+        accountCellViewModels = accounts.map { acc in
+            AccountSummaryCell.ViewModel(accountType: acc.type,
+                                         accountName: acc.name,
+                                         balance: acc.amount)
         }
     }
 }
