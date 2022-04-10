@@ -38,7 +38,7 @@ extension AccountSummaryViewController {
     private func setup() {
         setupTableView()
         setupNavigationBar()
-        fetchDataAndLoadViews()
+        fetchData()
     }
     
     private func setupTableView() {
@@ -122,7 +122,10 @@ extension AccountSummaryViewController {
 
 extension AccountSummaryViewController {
     
-    private func fetchDataAndLoadViews() {
+    private func fetchData() {
+        let group = DispatchGroup()
+        
+        group.enter()
         fetchProfile(forUserId: "1") { [weak self] result in
             guard let self = self else { return }
             
@@ -133,17 +136,25 @@ extension AccountSummaryViewController {
                 case .failure(let error):
                     print(error.localizedDescription)
             }
+            group.leave()
         }
         
-        fetchAccounts(forUserId: "1") { result in
+        group.enter()
+        fetchAccounts(forUserId: "1") { [weak self] result in
+            guard let self = self else { return }
+            
             switch result {
                 case .success(let accounts):
                     self.accounts = accounts
                     self.configureTableCells(with: accounts)
-                    self.tableView.reloadData()
                 case .failure(let error):
                     print(error.localizedDescription)
             }
+            group.leave()
+        }
+        
+        group.notify(queue: .main) { [tableView] in
+            tableView.reloadData()
         }
     }
 
