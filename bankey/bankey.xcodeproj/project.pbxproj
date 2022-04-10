@@ -17,6 +17,10 @@
 		3D90C70027EF9A6C0088B92B /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D90C6FF27EF9A6C0088B92B /* MainViewController.swift */; };
 		3D90C70A27EFB1020088B92B /* AccountSummaryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D90C70927EFB1020088B92B /* AccountSummaryViewController.swift */; };
 		3D90C70C27EFB46F0088B92B /* AccountSummaryTableHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D90C70B27EFB46F0088B92B /* AccountSummaryTableHeader.swift */; };
+		3DA2136228033EC800E81974 /* Date+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DA2136128033EC800E81974 /* Date+Utils.swift */; };
+		3DA213642803406C00E81974 /* AccountSummaryViewController+Networking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DA213632803406C00E81974 /* AccountSummaryViewController+Networking.swift */; };
+		3DA213682803701E00E81974 /* ProfileTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DA213672803701E00E81974 /* ProfileTests.swift */; };
+		3DA2136A280371EB00E81974 /* AccountTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DA21369280371EB00E81974 /* AccountTests.swift */; };
 		3DCB70D727E7D5CE007733F0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DCB70D627E7D5CE007733F0 /* AppDelegate.swift */; };
 		3DCB70DB27E7D5CE007733F0 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DCB70DA27E7D5CE007733F0 /* LoginViewController.swift */; };
 		3DCB70E027E7D5CF007733F0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3DCB70DF27E7D5CF007733F0 /* Assets.xcassets */; };
@@ -50,6 +54,10 @@
 		3D90C6FF27EF9A6C0088B92B /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		3D90C70927EFB1020088B92B /* AccountSummaryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountSummaryViewController.swift; sourceTree = "<group>"; };
 		3D90C70B27EFB46F0088B92B /* AccountSummaryTableHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountSummaryTableHeader.swift; sourceTree = "<group>"; };
+		3DA2136128033EC800E81974 /* Date+Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Utils.swift"; sourceTree = "<group>"; };
+		3DA213632803406C00E81974 /* AccountSummaryViewController+Networking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AccountSummaryViewController+Networking.swift"; sourceTree = "<group>"; };
+		3DA213672803701E00E81974 /* ProfileTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileTests.swift; sourceTree = "<group>"; };
+		3DA21369280371EB00E81974 /* AccountTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountTests.swift; sourceTree = "<group>"; };
 		3DCB70D327E7D5CE007733F0 /* bankey.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = bankey.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3DCB70D627E7D5CE007733F0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3DCB70DA27E7D5CE007733F0 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
@@ -92,6 +100,7 @@
 				3DCC31FB27F2032600741653 /* UITextField+SecureToggle.swift */,
 				3D787F8A27F14969002E3811 /* CurrencyFormatter.swift */,
 				3DCC31F927F1FF9F00741653 /* NSNotificationName.swift */,
+				3DA2136128033EC800E81974 /* Date+Utils.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -102,6 +111,24 @@
 				3D90C70927EFB1020088B92B /* AccountSummaryViewController.swift */,
 				3D90C70B27EFB46F0088B92B /* AccountSummaryTableHeader.swift */,
 				3D787F8627F0D74D002E3811 /* AccountSummaryCell.swift */,
+				3DA213632803406C00E81974 /* AccountSummaryViewController+Networking.swift */,
+			);
+			path = AccountSummary;
+			sourceTree = "<group>";
+		};
+		3DA2136528036FF400E81974 /* Util */ = {
+			isa = PBXGroup;
+			children = (
+				3DCC31F727F1E3FB00741653 /* CurrencyFormatterTests.swift */,
+			);
+			path = Util;
+			sourceTree = "<group>";
+		};
+		3DA2136628036FFF00E81974 /* AccountSummary */ = {
+			isa = PBXGroup;
+			children = (
+				3DA213672803701E00E81974 /* ProfileTests.swift */,
+				3DA21369280371EB00E81974 /* AccountTests.swift */,
 			);
 			path = AccountSummary;
 			sourceTree = "<group>";
@@ -162,7 +189,8 @@
 		3DCC31EF27F1E34300741653 /* bankeyUnitTests */ = {
 			isa = PBXGroup;
 			children = (
-				3DCC31F727F1E3FB00741653 /* CurrencyFormatterTests.swift */,
+				3DA2136628036FFF00E81974 /* AccountSummary */,
+				3DA2136528036FF400E81974 /* Util */,
 			);
 			path = bankeyUnitTests;
 			sourceTree = "<group>";
@@ -286,6 +314,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3D90C6FE27EF940F0088B92B /* UIViewController+Utils.swift in Sources */,
+				3DA2136228033EC800E81974 /* Date+Utils.swift in Sources */,
 				3DCB70EE27E7DD9D007733F0 /* LoginView.swift in Sources */,
 				3D90C6FC27EF88A40088B92B /* LocalState.swift in Sources */,
 				3D90C6F927EF7DA70088B92B /* DummyViewController.swift in Sources */,
@@ -302,6 +331,7 @@
 				3DE2301227EC01A400CAB753 /* OnboardingContainerViewController.swift in Sources */,
 				3D787F8927F148D0002E3811 /* Decimal+Utils.swift in Sources */,
 				3D90C70C27EFB46F0088B92B /* AccountSummaryTableHeader.swift in Sources */,
+				3DA213642803406C00E81974 /* AccountSummaryViewController+Networking.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -310,6 +340,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				3DCC31F827F1E3FB00741653 /* CurrencyFormatterTests.swift in Sources */,
+				3DA2136A280371EB00E81974 /* AccountTests.swift in Sources */,
+				3DA213682803701E00E81974 /* ProfileTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

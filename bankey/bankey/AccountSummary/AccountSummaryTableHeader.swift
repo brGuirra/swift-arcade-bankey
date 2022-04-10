@@ -23,6 +23,16 @@ class AccountSummaryTableHeader: UITableViewHeaderFooterView {
     
     let shakeBellView = ShakeyBellView()
     
+    struct ViewModel {
+        let greetMessage: String
+        let name: String
+        let date: Date
+        
+        var dateFormatted: String {
+            return date.monthDayYearString
+        }
+    }
+    
     override init(reuseIdentifier: String?) {
         super.init(reuseIdentifier: reuseIdentifier)
         
@@ -100,5 +110,11 @@ extension AccountSummaryTableHeader {
             shakeBellView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
             shakeBellView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor)
         ])
+    }
+    
+    func configure(viewModel: ViewModel) {
+        greetingLabel.text = viewModel.greetMessage
+        usernameLabel.text = viewModel.name
+        dateLabel.text = viewModel.dateFormatted
     }
 }
