@@ -17,7 +17,9 @@ class AccountSummaryViewController: UIViewController {
     var headerViewModel = AccountSummaryTableHeader.ViewModel(greetMessage: "Welcome", name: "", date: Date())
     var accountCellViewModels: [AccountSummaryCell.ViewModel] = []
     
+    // Components
     var tableView = UITableView()
+    let refreshControl = UIRefreshControl()
     
     lazy var logoutBarButtonItem: UIBarButtonItem = {
         let logoutBarButtonItem = UIBarButtonItem(title: "Logout", style: .plain, target: self, action: #selector(logoutTapped))
@@ -38,6 +40,7 @@ extension AccountSummaryViewController {
     private func setup() {
         setupTableView()
         setupNavigationBar()
+        setupRefreshControl()
         fetchData()
     }
     
@@ -65,6 +68,12 @@ extension AccountSummaryViewController {
     
     private func setupNavigationBar() {
         navigationItem.rightBarButtonItem = logoutBarButtonItem
+    }
+    
+    private func setupRefreshControl() {
+        refreshControl.tintColor = appColor
+        refreshControl.addTarget(self, action: #selector(refreshContent), for: .valueChanged)
+        tableView.refreshControl = refreshControl
     }
 }
 
@@ -116,6 +125,10 @@ extension AccountSummaryViewController {
     @objc func logoutTapped(_ sender: UIButton) {
         NotificationCenter.default.post(name: .logout, object: nil)
     }
+    
+    @objc func refreshContent() {
+        fetchData()
+    }
 }
 
 //MARK: - Networking
@@ -125,8 +138,11 @@ extension AccountSummaryViewController {
     private func fetchData() {
         let group = DispatchGroup()
         
+        // Testing - random number selection
+        let userId = String(Int.random(in: 1..<4))
+        
         group.enter()
-        fetchProfile(forUserId: "1") { [weak self] result in
+        fetchProfile(forUserId: userId) { [weak self] result in
             guard let self = self else { return }
             
             switch result {
@@ -140,7 +156,7 @@ extension AccountSummaryViewController {
         }
         
         group.enter()
-        fetchAccounts(forUserId: "1") { [weak self] result in
+        fetchAccounts(forUserId: userId) { [weak self] result in
             guard let self = self else { return }
             
             switch result {
@@ -155,6 +171,7 @@ extension AccountSummaryViewController {
         
         group.notify(queue: .main) { [tableView] in
             tableView.reloadData()
+            tableView.refreshControl?.endRefreshing()
         }
     }
 
