@@ -18,6 +18,7 @@
 		3D90C70A27EFB1020088B92B /* AccountSummaryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D90C70927EFB1020088B92B /* AccountSummaryViewController.swift */; };
 		3D90C70C27EFB46F0088B92B /* AccountSummaryTableHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D90C70B27EFB46F0088B92B /* AccountSummaryTableHeader.swift */; };
 		3DA2136228033EC800E81974 /* Date+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DA2136128033EC800E81974 /* Date+Utils.swift */; };
+		3DA213642803406C00E81974 /* AccountSummaryViewController+Networking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DA213632803406C00E81974 /* AccountSummaryViewController+Networking.swift */; };
 		3DCB70D727E7D5CE007733F0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DCB70D627E7D5CE007733F0 /* AppDelegate.swift */; };
 		3DCB70DB27E7D5CE007733F0 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DCB70DA27E7D5CE007733F0 /* LoginViewController.swift */; };
 		3DCB70E027E7D5CF007733F0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3DCB70DF27E7D5CF007733F0 /* Assets.xcassets */; };
@@ -52,6 +53,7 @@
 		3D90C70927EFB1020088B92B /* AccountSummaryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountSummaryViewController.swift; sourceTree = "<group>"; };
 		3D90C70B27EFB46F0088B92B /* AccountSummaryTableHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountSummaryTableHeader.swift; sourceTree = "<group>"; };
 		3DA2136128033EC800E81974 /* Date+Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Utils.swift"; sourceTree = "<group>"; };
+		3DA213632803406C00E81974 /* AccountSummaryViewController+Networking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AccountSummaryViewController+Networking.swift"; sourceTree = "<group>"; };
 		3DCB70D327E7D5CE007733F0 /* bankey.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = bankey.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3DCB70D627E7D5CE007733F0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3DCB70DA27E7D5CE007733F0 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
@@ -105,6 +107,7 @@
 				3D90C70927EFB1020088B92B /* AccountSummaryViewController.swift */,
 				3D90C70B27EFB46F0088B92B /* AccountSummaryTableHeader.swift */,
 				3D787F8627F0D74D002E3811 /* AccountSummaryCell.swift */,
+				3DA213632803406C00E81974 /* AccountSummaryViewController+Networking.swift */,
 			);
 			path = AccountSummary;
 			sourceTree = "<group>";
@@ -306,6 +309,7 @@
 				3DE2301227EC01A400CAB753 /* OnboardingContainerViewController.swift in Sources */,
 				3D787F8927F148D0002E3811 /* Decimal+Utils.swift in Sources */,
 				3D90C70C27EFB46F0088B92B /* AccountSummaryTableHeader.swift in Sources */,
+				3DA213642803406C00E81974 /* AccountSummaryViewController+Networking.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

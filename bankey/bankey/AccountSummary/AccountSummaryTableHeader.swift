@@ -23,7 +23,7 @@ class AccountSummaryTableHeader: UITableViewHeaderFooterView {
     
     let shakeBellView = ShakeyBellView()
     
-    struct TableHeaderViewModel {
+    struct ViewModel {
         let greetMessage: String
         let name: String
         let date: Date
@@ -112,9 +112,9 @@ extension AccountSummaryTableHeader {
         ])
     }
     
-    private func configure(vm: TableHeaderViewModel) {
-        greetingLabel.text = vm.greetMessage
-        usernameLabel.text = vm.name
-        dateLabel.text = vm.dateFormatted
+    func configure(viewModel: ViewModel) {
+        greetingLabel.text = viewModel.greetMessage
+        usernameLabel.text = viewModel.name
+        dateLabel.text = viewModel.dateFormatted
     }
 }
