@@ -21,6 +21,8 @@
 		3DA213642803406C00E81974 /* AccountSummaryViewController+Networking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DA213632803406C00E81974 /* AccountSummaryViewController+Networking.swift */; };
 		3DA213682803701E00E81974 /* ProfileTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DA213672803701E00E81974 /* ProfileTests.swift */; };
 		3DA2136A280371EB00E81974 /* AccountTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DA21369280371EB00E81974 /* AccountTests.swift */; };
+		3DA2136E28038C4600E81974 /* SkeletonLoadable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DA2136D28038C4600E81974 /* SkeletonLoadable.swift */; };
+		3DA2137028038DBF00E81974 /* SkeletonCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DA2136F28038DBF00E81974 /* SkeletonCell.swift */; };
 		3DCB70D727E7D5CE007733F0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DCB70D627E7D5CE007733F0 /* AppDelegate.swift */; };
 		3DCB70DB27E7D5CE007733F0 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DCB70DA27E7D5CE007733F0 /* LoginViewController.swift */; };
 		3DCB70E027E7D5CF007733F0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3DCB70DF27E7D5CF007733F0 /* Assets.xcassets */; };
@@ -58,6 +60,8 @@
 		3DA213632803406C00E81974 /* AccountSummaryViewController+Networking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AccountSummaryViewController+Networking.swift"; sourceTree = "<group>"; };
 		3DA213672803701E00E81974 /* ProfileTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileTests.swift; sourceTree = "<group>"; };
 		3DA21369280371EB00E81974 /* AccountTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountTests.swift; sourceTree = "<group>"; };
+		3DA2136D28038C4600E81974 /* SkeletonLoadable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkeletonLoadable.swift; sourceTree = "<group>"; };
+		3DA2136F28038DBF00E81974 /* SkeletonCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkeletonCell.swift; sourceTree = "<group>"; };
 		3DCB70D327E7D5CE007733F0 /* bankey.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = bankey.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3DCB70D627E7D5CE007733F0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3DCB70DA27E7D5CE007733F0 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
@@ -109,9 +113,9 @@
 			isa = PBXGroup;
 			children = (
 				3D90C70927EFB1020088B92B /* AccountSummaryViewController.swift */,
-				3D90C70B27EFB46F0088B92B /* AccountSummaryTableHeader.swift */,
-				3D787F8627F0D74D002E3811 /* AccountSummaryCell.swift */,
 				3DA213632803406C00E81974 /* AccountSummaryViewController+Networking.swift */,
+				3DA2136B28038C1D00E81974 /* Header */,
+				3DA2136C28038C2600E81974 /* Cells */,
 			);
 			path = AccountSummary;
 			sourceTree = "<group>";
@@ -131,6 +135,24 @@
 				3DA21369280371EB00E81974 /* AccountTests.swift */,
 			);
 			path = AccountSummary;
+			sourceTree = "<group>";
+		};
+		3DA2136B28038C1D00E81974 /* Header */ = {
+			isa = PBXGroup;
+			children = (
+				3D90C70B27EFB46F0088B92B /* AccountSummaryTableHeader.swift */,
+			);
+			path = Header;
+			sourceTree = "<group>";
+		};
+		3DA2136C28038C2600E81974 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				3D787F8627F0D74D002E3811 /* AccountSummaryCell.swift */,
+				3DA2136D28038C4600E81974 /* SkeletonLoadable.swift */,
+				3DA2136F28038DBF00E81974 /* SkeletonCell.swift */,
+			);
+			path = Cells;
 			sourceTree = "<group>";
 		};
 		3DCB70CA27E7D5CE007733F0 = {
@@ -314,6 +336,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3D90C6FE27EF940F0088B92B /* UIViewController+Utils.swift in Sources */,
+				3DA2137028038DBF00E81974 /* SkeletonCell.swift in Sources */,
 				3DA2136228033EC800E81974 /* Date+Utils.swift in Sources */,
 				3DCB70EE27E7DD9D007733F0 /* LoginView.swift in Sources */,
 				3D90C6FC27EF88A40088B92B /* LocalState.swift in Sources */,
@@ -331,6 +354,7 @@
 				3DE2301227EC01A400CAB753 /* OnboardingContainerViewController.swift in Sources */,
 				3D787F8927F148D0002E3811 /* Decimal+Utils.swift in Sources */,
 				3D90C70C27EFB46F0088B92B /* AccountSummaryTableHeader.swift in Sources */,
+				3DA2136E28038C4600E81974 /* SkeletonLoadable.swift in Sources */,
 				3DA213642803406C00E81974 /* AccountSummaryViewController+Networking.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

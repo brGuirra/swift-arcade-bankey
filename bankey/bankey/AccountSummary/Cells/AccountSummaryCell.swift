@@ -15,7 +15,7 @@ enum AccountType: String, Codable {
 
 class AccountSummaryCell: UITableViewCell {
     
-    static let resuseID = "AccountSummaryCell"
+    static let reuseID = "AccountSummaryCell"
     static let cellHeight: CGFloat = 112
     
     struct ViewModel {
