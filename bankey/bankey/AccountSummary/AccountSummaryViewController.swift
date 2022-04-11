@@ -21,6 +21,9 @@ class AccountSummaryViewController: UIViewController {
     var tableView = UITableView()
     let refreshControl = UIRefreshControl()
     
+    // Networking
+    var profileManager: ProfileManageable = ProfileManager()
+    
     var isDataLoaded = false
     
     lazy var logoutBarButtonItem: UIBarButtonItem = {
@@ -168,7 +171,7 @@ extension AccountSummaryViewController {
         let userId = String(Int.random(in: 1..<4))
         
         group.enter()
-        fetchProfile(forUserId: userId) { [weak self] result in
+        profileManager.fetchProfile(forUserId: userId) { [weak self] result in
             guard let self = self else { return }
             
             switch result {
@@ -224,19 +227,22 @@ extension AccountSummaryViewController {
     }
     
     private func displayError(_ error: NetworkError) {
+        let titleAndMessage = titleAndMessage(for: error)
+        self.showErrorAlert(title: titleAndMessage.0, message: titleAndMessage.1)
+    }
+    
+    private func titleAndMessage(for error: NetworkError) -> (String, String) {
         let title: String
         let message: String
-        
         switch error {
             case .serverError:
                 title = "Server Error"
-                message = "Ensure you are connected to the internet. Please try again."
-            case .decodingError:
-                title = "Decoding Error"
                 message = "We could not process your request. Please try again."
+            case .decodingError:
+                title = "Network Error"
+                message = "Ensure you are connected to the internet. Please try again."
         }
-        
-        showErrorAlert(title: title, message: message)
+        return (title, message)
     }
     
     private func showErrorAlert(title: String, message: String) {
@@ -247,5 +253,12 @@ extension AccountSummaryViewController {
         alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
         
         present(alert, animated: true, completion: nil)
+    }
+}
+
+// MARK: Unit testing
+extension AccountSummaryViewController {
+    func titleAndMessageForTesting(for error: NetworkError) -> (String, String) {
+        return titleAndMessage(for: error)
     }
 }
