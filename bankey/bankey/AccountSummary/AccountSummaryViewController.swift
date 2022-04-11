@@ -170,6 +170,17 @@ extension AccountSummaryViewController {
         // Testing - random number selection
         let userId = String(Int.random(in: 1..<4))
         
+        fetchProfile(group: group, userId: userId)
+        fetchAccounts(group: group, userId: userId)
+        
+        group.notify(queue: .main) { [weak self] in
+            guard let self = self else { return }
+            
+            self.reloadView()
+        }
+    }
+    
+    private func fetchProfile(group: DispatchGroup, userId: String) {
         group.enter()
         profileManager.fetchProfile(forUserId: userId) { [weak self] result in
             guard let self = self else { return }
@@ -182,7 +193,9 @@ extension AccountSummaryViewController {
             }
             group.leave()
         }
-        
+    }
+    
+    private func fetchAccounts(group: DispatchGroup, userId: String) {
         group.enter()
         fetchAccounts(forUserId: userId) { [weak self] result in
             guard let self = self else { return }
@@ -195,19 +208,17 @@ extension AccountSummaryViewController {
             }
             group.leave()
         }
+    }
+    
+    private func reloadView() {
+        tableView.refreshControl?.endRefreshing()
         
-        group.notify(queue: .main) { [weak self] in
-            guard let self = self else { return }
-            
-            self.tableView.refreshControl?.endRefreshing()
-            
-            guard let profile = self.profile else { return }
-            
-            self.isDataLoaded = true
-            self.configureTableHeaderView(with: profile)
-            self.configureTableCells(with: self.accounts)
-            self.tableView.reloadData()
-        }
+        guard let profile = self.profile else { return }
+        
+        isDataLoaded = true
+        configureTableHeaderView(with: profile)
+        configureTableCells(with: self.accounts)
+        tableView.reloadData()
     }
 
     private func configureTableHeaderView(with profile: Profile) {
@@ -261,4 +272,10 @@ extension AccountSummaryViewController {
     func titleAndMessageForTesting(for error: NetworkError) -> (String, String) {
         return titleAndMessage(for: error)
     }
+    
+    func forceFetchProfile() {
+        fetchProfile(group: DispatchGroup(), userId: "1")
+    }
 }
+
+
